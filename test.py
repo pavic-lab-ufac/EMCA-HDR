@@ -84,14 +84,15 @@ def main():
         pred_mu, target_mu = range_compressor(pred), range_compressor(target)
 
         psnr_linear.update(psnr(pred, target))
-        ssim_linear.update(calculate_ssim(pred, target))
+        # calculate_ssim uses the conventional 8-bit [0, 255] constants.
+        ssim_linear.update(calculate_ssim(pred * 255.0, target * 255.0))
         psnr_mu.update(psnr(pred_mu, target_mu))
-        ssim_mu.update(calculate_ssim(pred_mu, target_mu))
+        ssim_mu.update(calculate_ssim(pred_mu * 255.0, target_mu * 255.0))
 
         scene_name = dataset.scenes_list[index]
         cv2.imwrite(str(args.save_dir / f"{scene_name}_pred.png"),
-                    np.clip(pred_mu[:, :, ::-1] * 255.0, 0, 255).astype(np.uint8))
-        cv2.imwrite(str(args.save_dir / f"{scene_name}_pred.hdr"), pred[:, :, ::-1].astype(np.float32))
+                    np.clip(pred_mu * 255.0, 0, 255).astype(np.uint8))
+        cv2.imwrite(str(args.save_dir / f"{scene_name}_pred.hdr"), pred.astype(np.float32))
 
     print(f"PSNR (linear): {psnr_linear.avg:.4f} dB | SSIM (linear): {ssim_linear.avg:.4f}")
     print(f"PSNR (mu-law): {psnr_mu.avg:.4f} dB | SSIM (mu-law): {ssim_mu.avg:.4f}")
