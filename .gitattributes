@@ -1,0 +1,2 @@
+# Radiance HDR files have an ASCII header and binary pixel data.
+*.hdr binary

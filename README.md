@@ -64,6 +64,8 @@ python test.py \
 
 To force CPU inference, add `--no_cuda`. The script saves one tone-mapped PNG and one linear HDR prediction per scene, and reports PSNR/SSIM in linear and mu-law domains when reference HDR images are available. Optional model complexity reporting is available with `--profile` after installing `thop` (`pip install thop`).
 
+Precomputed predictions for all 15 Kalantari/SIG17 test scenes, along with the evaluation summary, are available in [`inference_results/kalantari/`](inference_results/kalantari/).
+
 ## Ablation checkpoints
 
 The model variants and their weights are in `Ablation_Study/ckpt_Ferreti(...)`. Each folder's `best_checkpoint_.pth` is the best checkpoint for that variant; `latest_checkpoint_.pth` is the final checkpoint. The corresponding `xxxx.py` file defines that variant. These checkpoints are provided for research comparison; the standard inference script loads the principal EMCA-HDR model.
