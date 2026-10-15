@@ -1,0 +1,3 @@
+best epoch:175
+Alignment Output - PSNR_l: 41.8692, PSNR_mu: 44.3233, SSIM_l: 0.9885, SSIM_mu: 0.9913
+RefineNet Output - PSNR_l: 41.8692, PSNR_mu: 44.3233, SSIM_l: 0.9885, SSIM_mu: 0.9913

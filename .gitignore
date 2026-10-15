@@ -1,0 +1,23 @@
+# Dataset and generated outputs
+/data/
+/test_results/
+/dataset/sig17_training_crop*/
+
+# HDR-VDP MATLAB toolkit has separate redistribution restrictions; obtain it upstream if needed
+/utils/hdrvdp2_pu21/
+
+# Downloaded VGG16 weights (torchvision downloads these when required)
+/VGG16/
+
+# Python artifacts and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
